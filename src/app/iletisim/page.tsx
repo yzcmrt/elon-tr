@@ -10,7 +10,8 @@ export default function Contact() {
     setStatus('loading')
 
     const form = e.target as HTMLFormElement
-    
+    const formElements = form.elements as any
+
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -20,10 +21,10 @@ export default function Contact() {
         },
         body: JSON.stringify({
           access_key: "7010f089-3101-49a9-98b2-6632cdd1e17a",
-          name: form.name.value,
-          email: form.email.value,
-          phone: form.phone.value,
-          message: form.message.value,
+          name: formElements.name.value,
+          email: formElements.email.value,
+          phone: formElements.phone.value,
+          message: formElements.message.value,
         }),
       })
 
